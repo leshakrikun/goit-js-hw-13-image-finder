@@ -15,18 +15,21 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="container">
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <include src="./partials/example.html"></include>
-    <form class="search-form" id="search-form">
-      <input
-        type="text"
-        name="query"
-        autocomplete="off"
-        placeholder="Search images..."
-      />
-    </form>
-
+    <!-- <include src="./partials/example.html"></include> -->
+    <div class="form">
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="query"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+      </form>
+      <button class ="submit">Показать</button>
+    </div>
+    <button class="more hidden">Load more</button>
     <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
     <script src="./index.js"></script>
   </body>

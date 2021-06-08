@@ -48,19 +48,13 @@ function draw(picture) {
             loadMoreBtn.classList.add('hidden')
             console.log('check');
         }
+        document.querySelector('.gallery').scrollIntoView({
+            behavior: 'smooth',
+            block: 'end',
+            });
 } 
 
 const showBtn = document.querySelector('.submit');
 
 showBtn.addEventListener('click', fetchQuery);
-
-loadMoreBtn.addEventListener('click', loadMore);
-
-function loadMore () {
-    loadMoreBtn.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-        });
-    fetchQuery ();
-}
-
+loadMoreBtn.addEventListener('click', fetchQuery);

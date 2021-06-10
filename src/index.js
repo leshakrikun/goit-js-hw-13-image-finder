@@ -29,9 +29,10 @@ function fetchQuery () {
         return;
     } else {
     const promise = query(search, counter);
-    promise.then(picture => draw(picture));
-}}
-
+    promise.then(picture => draw(picture))
+    }
+    
+}
 
 function draw(picture) {
         
@@ -39,22 +40,27 @@ function draw(picture) {
         const ulElemNew = '<ul class="gallery"></ul>';
         loadMoreBtn.insertAdjacentHTML('beforeBegin', ulElemNew);
     } 
-
     markup = cardTemplates(picture.hits);
-    document.querySelector('.gallery').insertAdjacentHTML('beforeEnd', markup);
+     document.querySelector('.gallery').insertAdjacentHTML('beforeEnd', markup);
         if(picture.total/counter>12) {
             loadMoreBtn.classList.remove('hidden')
         } else {
             loadMoreBtn.classList.add('hidden')
-            console.log('check');
-        }
-        document.querySelector('.gallery').scrollIntoView({
-            behavior: 'smooth',
-            block: 'end',
-            });
+        };
+        document.querySelector('.more').scrollIntoView({behavior: 'smooth', block: 'end'});
 } 
+function scroll () {
+    loadMoreBtn.scrollIntoView({behavior: 'smooth', block: 'end'});
+}
 
 const showBtn = document.querySelector('.submit');
 
 showBtn.addEventListener('click', fetchQuery);
-loadMoreBtn.addEventListener('click', fetchQuery);
+
+loadMoreBtn.addEventListener('click', () => {
+    fetchQuery ();
+    setTimeout(() => {
+        scroll(); 
+      }, 1000);
+});
+
